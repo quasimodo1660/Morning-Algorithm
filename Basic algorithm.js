@@ -197,3 +197,28 @@ var selfDividingNumbers = function(left, right) {
   }  
   return arr
 };
+//-----------------------------------------------------------------------------------------------
+//Remove Element
+// Given an array and a value, remove all instances of that value in-place and return the new length.
+// Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+// The order of elements can be changed. It doesn't matter what you leave beyond the new length.
+// Example:
+// Given nums = [3,2,2,3], val = 3,
+// Your function should return length = 2, with the first two elements of nums being 2.
+var removeElement = function(nums, val) {
+    // for (var x=0;x<nums.length;x++){
+    //     if(nums[x]==val)
+    //         nums.splice(x,1);
+    // }
+    var x=0;
+    while(x<nums.length){
+        if(nums[x]==val){
+            nums.splice(x,1); 
+            x=0;
+        }
+        else
+            x++         
+    }
+    return nums
+};
+console.log(removeElement([3,3],3))
