@@ -206,10 +206,6 @@ var selfDividingNumbers = function(left, right) {
 // Given nums = [3,2,2,3], val = 3,
 // Your function should return length = 2, with the first two elements of nums being 2.
 var removeElement = function(nums, val) {
-    // for (var x=0;x<nums.length;x++){
-    //     if(nums[x]==val)
-    //         nums.splice(x,1);
-    // }
     var x=0;
     while(x<nums.length){
         if(nums[x]==val){
@@ -222,3 +218,45 @@ var removeElement = function(nums, val) {
     return nums
 };
 console.log(removeElement([3,3],3))
+
+//Reverse String
+var reverseString = function(s) {
+    return s.split('').reverse().join('')
+};
+
+//Single Number
+var singleNumber = function(nums) {
+    if(nums.length==1){
+        return nums[0]
+    }
+    for(var x=0;x<nums.length;x++){
+        for(var y=1;y<nums.length;y++){
+            if(x!=y){
+                if(nums[x]==nums[y])
+                    break
+                
+                }   
+            return nums[x]             
+            }
+                      
+        }
+}
+
+
+console.log(singleNumber([2,2,1]))
+
+//Fizz Buzz
+var fizzBuzz = function(n) {
+    var arr=[];
+    for (var x=1;x<=n;x++){
+        if(x%3==0&&x%5==0)
+            arr.push('FizzBuzz')
+        else if(x%3==0)
+            arr.push('Fizz')
+        else if(x%5==0)
+            arr.push('Buzz')
+        else
+            arr.push(String(x))
+    }
+    return arr;
+};
