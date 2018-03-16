@@ -260,3 +260,72 @@ var fizzBuzz = function(n) {
     }
     return arr;
 };
+
+//Sum of Two Integers
+var getSum = function(a, b) {
+    console.log(a.charCodeAt(0))
+    console.log(a.charCodeAt(0)-b.charCodeAt(0))
+};
+getSum('B','A')
+
+
+// console.time("a")
+var map={
+    name:"Kevin",
+    subMap:{
+        Person:"Kevin He",
+        address:{
+            street:"1234,Zanker,Rd",
+            city:"San Jose",
+            state:"CA",
+            zip:''
+        }
+    }
+}
+
+var printInfo=function(m){
+    var returnArr=[]
+    returnArr.push(m.subMap.Person)
+    returnArr.push(m.subMap.address.street)
+    returnArr.push(m.subMap.address.city)
+    returnArr.push(m.subMap.address.state)
+    if(m.subMap.address.zip=='')
+        returnArr.push('nil')
+    else
+        returnArr.push(m.subMap.address.zip)
+    return returnArr
+}
+
+// console.log(printInfo(map))
+// console.timeEnd("a")
+
+
+// Related to question Excel Sheet Column Title
+// Given a column title as appear in an Excel sheet, return its corresponding column number.
+// For example:
+
+//     A -> 1
+//     B -> 2
+//     C -> 3
+//     ...
+//     Z -> 26
+//     AA -> 27
+//     AB -> 28 
+var titleToNumber = function(s) {
+    var sum=0;
+    for(var x=s.length-1,y=0;x>=0;x--,y++){
+        if(x!=s.length-1)
+            sum=sum+Math.pow(26,y)*(s[x].charCodeAt(0)-'A'.charCodeAt(0)+1)
+        else{
+            if(s[x]=='A')
+            sum+=1
+        else
+            sum+=(s[x].charCodeAt(0)-'A'.charCodeAt(0)+1)
+        }
+        
+        
+    }
+    return sum;
+};
+
+console.log(titleToNumber('AZZ'))
