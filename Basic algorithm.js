@@ -242,7 +242,7 @@ var singleNumber = function(nums) {
 }
 
 
-console.log('sigleNumber '+singleNumber([1,3,1,-1,3]))
+// console.log('sigleNumber '+singleNumber([1,3,1,-1,3]))
 
 //Fizz Buzz
 var fizzBuzz = function(n) {
@@ -327,7 +327,7 @@ var titleToNumber = function(s) {
     return sum;
 };
 
-console.log(titleToNumber('AZZ'))
+// console.log(titleToNumber('AZZ'))
 
 
 //387. First Unique Character in a String
@@ -371,7 +371,7 @@ var moveZeroes = function(nums) {
         }
     return nums
 };
-console.log('Move Zeroes '+moveZeroes([0,0,1]))
+// console.log('Move Zeroes '+moveZeroes([0,0,1]))
 
 //Contains Duplicate
 var containsDuplicate = function(nums) {
@@ -383,4 +383,16 @@ var containsDuplicate = function(nums) {
     }
     return false;
 };
-console.log('Contains Duplicate '+ containsDuplicate([1]))
+// console.log('Contains Duplicate '+ containsDuplicate([1]))
+
+//Power of Three
+var isPowerOfThree = function(n) {
+  if(n==1||n==3)
+    return true;
+  else if(n.toString().split('').reduce((x,y)=> x+Number(y),0)%9==0 && n%2!=0)
+    return true
+  else
+    return false
+};
+
+console.log(isPowerOfThree(45))
