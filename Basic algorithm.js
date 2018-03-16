@@ -374,3 +374,13 @@ var moveZeroes = function(nums) {
 console.log('Move Zeroes '+moveZeroes([0,0,1]))
 
 //Contains Duplicate
+var containsDuplicate = function(nums) {
+    for(var x=0;x<nums.length;x++){
+        for(var y=0;y<nums.length;y++){
+            if(nums[x]==nums[y]&&x!=y)
+                return true;
+        }
+    }
+    return false;
+};
+console.log('Contains Duplicate '+ containsDuplicate([1]))
