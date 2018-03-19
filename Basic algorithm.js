@@ -409,3 +409,18 @@ var productExceptSelf = function(nums) {
     return arr;
 };
 console.log(productExceptSelf([1,2,3,4]))
+
+//75. Sort Colors
+var sortColors = function(nums) {
+    var temp
+    for(var x=0;x<nums.length-1;x++){
+        if(nums[x]>nums[x+1]){
+            temp=nums[x];
+            nums[x]=nums[x+1];
+            nums[x+1]=temp;
+            x=-1;
+        }
+    }
+    return nums
+};
+console.log(sortColors([2,2,0,1,0,2,0]))
