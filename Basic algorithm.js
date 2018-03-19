@@ -71,36 +71,29 @@ var maxProduct = function(words) {
     var arr2=[];
     var flag;  
     var result=0;
-    for (var x=0;x<words.length;x++){
-        for (var y=0;y<words.length;y++){   
-            if(x!=y){
-                flag=true;
-                for(var z=0;z<words[x].length;z++){
-                    if(words[y].includes(words[x][z]))
-                        flag=false;
-                }
+    for (var x=0;x<words.length-1;x++){
+        for (var y=x+1;y<words.length;y++){  
+            flag=true;
+            for(var z=0;z<words[x].length;z++){
+                if(words[y].includes(words[x][z])){
+                    flag=false;
+                    break;
+                }          
             }
-            if(flag && arr2.indexOf(words[y])==-1){
-                arr2.push(words[y])
-                
-            }
-                
-            if(flag) {
-                arr.push(words[x].length*words[y].length);   
-            }
-                
+            if(flag)
+                arr.push(words[x].length*words[y].length)
         }
+        
     }
-    
     if(arr.length>0)
         result=Math.max(...arr);
     return result;
     
 };
 //-------------------------------------------------------------------------------------------
-// console.log(maxProduct(["abcw", "baz", "foo", "bar", "xtfn", "abcdef"]))
-// console.log(maxProduct(["a", "ab", "abc", "d", "cd", "bcd", "abcd"]))
-// console.log(maxProduct(["edadc","ebbfe","aacdde","dfe","cb","fddddff","fabca","adccac","ece","ccaf","feba","bcb","edadc","aea","bacb","acefa","fcebffd","dfeebca","bedcbaa","deaccc","abedc","dadff","eef","ddebbb","abecab","cd","abdeee","eedce","deef","dceaddd","ced","fbbf","ba","eefeda","fb","cddc","adafbf","dded","aadbf","caefbaf","ccebf","dbb","ee","dadcecc","ddbcabb","afeaa","ec","aad","efde","cbcda","cdbdafd","cddc","ecaaa","ae","cfc","bccac","cdcc","abbbf","fcdface","ddbcdc","bfebb","daed","bc","dc","ecdfc","eeb","bb","dad","caecb","fbe","bbbc","cacea","dbc","fbe","bcfffbd","aeda","cff","ddfc","ea","bdfd","ccb","cb","ae","ceabefa","dcea","cbaed","bfedf","fa","ccd","fece","bceef","acabca","dafa","fdeec","dac","cae","adeeadb","ecacc","acfe","de"]))
+console.log(maxProduct(["abcw", "baz", "foo", "bar", "xtfn", "abcdef"]))
+console.log(maxProduct(["a", "ab", "abc", "d", "cd", "bcd", "abcd"]))
+console.log(maxProduct(["edadc","ebbfe","aacdde","dfe","cb","fddddff","fabca","adccac","ece","ccaf","feba","bcb","edadc","aea","bacb","acefa","fcebffd","dfeebca","bedcbaa","deaccc","abedc","dadff","eef","ddebbb","abecab","cd","abdeee","eedce","deef","dceaddd","ced","fbbf","ba","eefeda","fb","cddc","adafbf","dded","aadbf","caefbaf","ccebf","dbb","ee","dadcecc","ddbcabb","afeaa","ec","aad","efde","cbcda","cdbdafd","cddc","ecaaa","ae","cfc","bccac","cdcc","abbbf","fcdface","ddbcdc","bfebb","daed","bc","dc","ecdfc","eeb","bb","dad","caecb","fbe","bbbc","cacea","dbc","fbe","bcfffbd","aeda","cff","ddfc","ea","bdfd","ccb","cb","ae","ceabefa","dcea","cbaed","bfedf","fa","ccd","fece","bceef","acabca","dafa","fdeec","dac","cae","adeeadb","ecacc","acfe","de"]))
 // // console.log(["edadc","ebbfe","aacdde","dfe","cb","fddddff","fabca","adccac","ece","ccaf","feba","bcb","edadc","aea","bacb","acefa","fcebffd","dfeebca","bedcbaa","deaccc","abedc","dadff","eef","ddebbb","abecab","cd","abdeee","eedce","deef","dceaddd","ced","fbbf","ba","eefeda","fb","cddc","adafbf","dded","aadbf","caefbaf","ccebf","dbb","ee","dadcecc","ddbcabb","afeaa","ec","aad","efde","cbcda","cdbdafd","cddc","ecaaa","ae","cfc","bccac","cdcc","abbbf","fcdface","ddbcdc","bfebb","daed","bc","dc","ecdfc","eeb","bb","dad","caecb","fbe","bbbc","cacea","dbc","fbe","bcfffbd","aeda","cff","ddfc","ea","bdfd","ccb","cb","ae","ceabefa","dcea","cbaed","bfedf","fa","ccd","fece","bceef","acabca","dafa","fdeec","dac","cae","adeeadb","ecacc","acfe","de"].filter((x)=>x.length>5))
 
 // Find the contiguous subarray within an array (containing at least one number) which has the largest product.
