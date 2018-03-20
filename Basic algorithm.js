@@ -424,3 +424,17 @@ var sortColors = function(nums) {
     return nums
 };
 console.log(sortColors([2,2,0,1,0,2,0]))
+
+//162. Find Peak Element
+var findPeakElement = function(nums) {
+    var index=0;
+    nums.unshift(Number.NEGATIVE_INFINITY);
+    nums.push(Number.NEGATIVE_INFINITY);
+    for(var x=1;x<=nums.length-1;x++){
+        if(nums[x]>nums[x-1] && nums[x]>nums[x+1]){
+            index=x-1;
+        }
+    }
+    return index
+};
+console.log(findPeakElement([3,2,1]))
