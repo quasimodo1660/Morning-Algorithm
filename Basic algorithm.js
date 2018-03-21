@@ -438,3 +438,29 @@ var findPeakElement = function(nums) {
     return index
 };
 console.log(findPeakElement([3,2,1]))
+
+//Subsets
+var subsets = function(nums) {
+    var arr=[];
+    var arr1=[];
+    arr.push([]);
+    arr.push([nums[0]])
+    for(var i=1;i<nums.length;i++){  
+       for(x=0;x<arr.length;x++){
+           arr1[x]=arr[x].slice();
+       }
+        for(var j=0;j<arr1.length;j++){  
+            arr1[j].push(nums[i])
+            
+        }
+        arr=arr.concat(arr1)
+    }
+    return arr
+};
+
+// console.log(subsets([0]))
+console.log(subsets([1,2]))
+console.log(subsets([1,2,3]))
+console.log(subsets([1,2,3,4]))
+console.log('length = '+subsets([1,2,3,4]).length)
+// console.log([].concat([2]))
