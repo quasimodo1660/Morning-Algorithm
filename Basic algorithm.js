@@ -534,5 +534,35 @@ var subsets = function(str,arr=[],l=0,i=0){
     }
 }
 
-console.log(subsets('abc'))
+// console.log(subsets('abc'))
 
+function Node (value){
+    this.value=value;
+    this.next=null;
+    this.previous=null;
+}
+
+function SLL(){
+    this.head=null;
+    this.length=0;
+}
+
+
+SLL.prototype.add=function(val){
+    var node = new Node(val)
+    if(!this.head){
+        this.head=node;
+    }
+    else{
+        current=this.head;
+        while(current.next){
+            current=current.next;
+        }
+        current.next=node;
+    }
+    this.length++;
+}
+
+var sll=new SLL()
+sll.add(5)
+console.log(sll)
