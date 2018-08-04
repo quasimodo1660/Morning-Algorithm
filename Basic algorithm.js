@@ -15,14 +15,14 @@
 // // Example:
 // // Input: "Hello World"
 // // Output: 5
-// var lengthOfLastWord = function(s) {
-//     var arr = s.split(' ').reverse();
-//     for (var x=0;x<arr.length;x++){
-//         if(arr[x]!='')
-//             return arr[x].length;
-//     }
-//     return 0;
-// };
+var lengthOfLastWord = function(s) {
+    var arr = s.split(' ').reverse();
+    for (var x=0;x<arr.length;x++){
+        if(arr[x]!='')
+            return arr[x].length;
+    }
+    return 0;
+};
 
 // //-------------------------------------------------------------------------------------------
 // // Happy Number
@@ -442,23 +442,6 @@
 // // console.log(findPeakElement([3,2,1]))
 
 //Subsets
-// var subsets = function(nums) {
-//     var arr=[];
-//     var arr1=[];
-//     arr.push([]);
-//     arr.push([nums[0]])
-//     for(var i=1;i<nums.length;i++){  
-//        for(x=0;x<arr.length;x++){
-//            arr1[x]=arr[x].slice();
-//        }
-//         for(var j=0;j<arr1.length;j++){  
-//             arr1[j].push(nums[i])
-            
-//         }
-//         arr=arr.concat(arr1)
-//     }
-//     return arr
-// };
 
 // console.log(subsets([0]))
 // // console.log(subsets([1,2]))
@@ -516,23 +499,23 @@ var rBinarySearch = function(num,arr,start=Math.floor(arr.length/2)){
 
 // console.log(rBinarySearch(9,[4,5,6,8,12]))
 
-var subsets = function(str,arr=[],l=0,i=0){
-    if(str.length==0){
-        return arr
-    }    
-    else{
-        if(arr.length==0){
-            arr.push('')
-            arr.push(str[0])
-        }
-        else{
-            for(i=0;i<l;i++){
-                arr.push(arr[i]+str[0])
-            }
-        }   
-        return subsets(str.replace(str[0],''),arr,arr.length)
-    }
-}
+// var subsets = function(str,arr=[],l=0){
+//     if(str.length==0){
+//         return arr
+//     }    
+//     else{
+//         if(arr.length==0){
+//             arr.push('')
+//             arr.push(str[0])
+//         }
+//         else{
+//             for(i=0;i<l;i++){
+//                 arr.push(arr[i]+str[0])
+//             }
+//         }   
+//         return subsets(str.replace(str[0],''),arr,arr.length)
+//     }
+// }
 
 // console.log(subsets('abc'))
 
@@ -565,4 +548,58 @@ SLL.prototype.add=function(val){
 
 var sll=new SLL()
 sll.add(5)
-console.log(sll)
+
+var numJewelsInStones = function(J, S) {
+    var num=0
+    for(var x=0;x<J.length;x++){
+        for(var y=0;y<S.length;y++){
+            if(J[x]==S[y])
+                num++
+        }
+    }
+    return num
+};
+
+// console.log(numJewelsInStones('z','ZZ'))
+
+function subsets(arr,result=[]){
+    if(arr.length==0)
+        return result
+    else{
+        if(result.length==0){
+            result.push([])
+            result.push([arr[0]])
+        }
+        else{
+            var temp=[]
+            for(i=0;i<result.length;i++){
+                temp[i]=result[i].slice()
+                temp[i].push(arr[0])
+            }
+            result=result.concat(temp)     
+        }       
+        arr.shift()
+        return subsets(arr,result)
+    }  
+}
+
+// var subsets = function(nums) {
+//     var arr=[];
+//     var arr1=[];
+//     arr.push([]);
+//     arr.push([nums[0]])
+//     for(var i=1;i<nums.length;i++){  
+//        for(x=0;x<arr.length;x++){
+//            arr1[x]=arr[x].slice();
+//        }
+//         for(var j=0;j<arr1.length;j++){  
+//             arr1[j].push(nums[i])
+            
+//         }
+//         arr=arr.concat(arr1)
+//     }
+//     return arr
+// };
+
+
+console.log(subsets([1,2,3]))
