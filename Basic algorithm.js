@@ -583,23 +583,69 @@ function subsets(arr,result=[]){
     }  
 }
 
-// var subsets = function(nums) {
-//     var arr=[];
-//     var arr1=[];
-//     arr.push([]);
-//     arr.push([nums[0]])
-//     for(var i=1;i<nums.length;i++){  
-//        for(x=0;x<arr.length;x++){
-//            arr1[x]=arr[x].slice();
-//        }
-//         for(var j=0;j<arr1.length;j++){  
-//             arr1[j].push(nums[i])
+var subsetsII = function(nums) {
+    var arr=[];
+    var arr1=[];
+    arr.push([]);
+    arr.push([nums[0]])
+    for(var i=1;i<nums.length;i++){  
+       for(x=0;x<arr.length;x++){
+           arr1[x]=arr[x].slice();
+       }
+        for(var j=0;j<arr1.length;j++){  
+            arr1[j].push(nums[i])
             
-//         }
-//         arr=arr.concat(arr1)
-//     }
-//     return arr
-// };
+        }
+        arr=arr.concat(arr1)
+    }
+    arr=arr.filter(function(elem,index,arr){
+        return arr.indexOf(elem)==index;
+    })
+    return arr
+};
+
+//349. Intersection of Two Arrays
+// Given two arrays, write a function to compute their intersection.
+
+// Example:
+// Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].
+
+// Note:
+// Each element in the result must be unique.
+// The result can be in any order.
+
+var intersection = function(nums1, nums2) {
+    var number=[]
+    for(var x=0;x<nums1.length;x++){
+        for(var y=0;y<nums2.length;y++){
+            if(nums1[x]==nums2[y]){
+                if(!number.includes(nums1[x]))
+                    number.push(nums1[x])
+            }
+        }
+    }
+    return number
+ };
 
 
-console.log(subsets([1,2,3]))
+ var intersectionII = function(nums1, nums2) {
+    var number=[]
+    var long=nums1,short=nums2;
+    if(nums1.length<nums2.length){
+        short=nums1;
+        long=nums2;
+    }
+    
+    for(var x=0;x<short.length;x++){
+        var temp=short[x]
+        if(long.includes(temp)){
+            long[long.indexOf(temp)]=null;
+            number.push(temp)
+        }
+    }
+    return number
+ };
+
+
+ console.log(intersectionII([1,2],[1,1]))
+
