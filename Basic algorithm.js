@@ -694,4 +694,18 @@ var uniqueMorseRepresentations = function(words) {
     return arr.length
 };
 
-console.log(uniqueMorseRepresentations(["gin", "zen", "gig", "msg"]))
+var flipAndInvertImage = function(A) {
+    for(var x=0;x<A.length;x++){
+        A[x]=A[x].reverse()
+        for(var y=0;y<A[x].length;y++){
+            if(A[x][y]==0)
+                A[x][y]=1
+            else
+                A[x][y]=0
+        }
+    }
+
+    return A
+};
+
+console.log(flipAndInvertImage([[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]))
