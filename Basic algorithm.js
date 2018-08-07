@@ -647,5 +647,51 @@ var intersection = function(nums1, nums2) {
  };
 
 
- console.log(intersectionII([1,2],[1,1]))
 
+// Evaluate a boolean expression represented as string
+// Given a string consisting of only 0, 1, A, B, C where
+// A = AND
+// B = OR
+// C = XOR
+// Calculate the value of the string assuming no order of precedence and evaluation is done from left to right.
+
+// Constraints – The length of string will be odd. It will always be a valid string.
+// Example, 1AA0 will not be given as an input.
+
+// Examples:
+
+// Input : 1A0B1
+// Output : 1
+// 1 AND 0 OR 1 = 1
+
+// Input : 1C1B1B0A0
+// Output : 0
+
+var BooleanExpression = function(str){
+    for(var x=0;x<str.length;x++){
+        console.log(str[x])
+    }
+}
+
+
+//  BooleanExpression('(a==b)||(b==c)')
+//  console.log(('a'=='b')||('b'=='c'))
+
+var uniqueMorseRepresentations = function(words) {
+    var arr=[]
+    var temp=''
+    var morse=[".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."];
+    for(var i=0;i<words.length;i++){
+        temp=''
+        for(var x=0;x<words[i].length;x++){
+            temp+=morse[words[i].charCodeAt(x)-'a'.charCodeAt(0)]
+ 
+        }
+        if(!arr.includes(temp)){
+                arr.push(temp)
+            }
+    }
+    return arr.length
+};
+
+console.log(uniqueMorseRepresentations(["gin", "zen", "gig", "msg"]))
