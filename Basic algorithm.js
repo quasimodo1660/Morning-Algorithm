@@ -708,4 +708,44 @@ var flipAndInvertImage = function(A) {
     return A
 };
 
-console.log(flipAndInvertImage([[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]))
+
+var judgeCircle = function(moves) {
+    var initPosition=[0,0]
+    for(var x=0;x<moves.length;x++){
+        if(moves[x]=='U')
+            initPosition[1]++
+        if(moves[x]=='D')
+            initPosition[1]--
+        if(moves[x]=='L')
+            initPosition[0]--
+        if(moves[x]=='R')
+            initPosition[0]++  
+        // console.log(initPosition)     
+    }
+    return initPosition[0]==0&&initPosition[1]==0
+};
+
+
+//ZigZag
+// Input: s = "PAYPALISHIRING", numRows = 4
+// Output: "PINALSIGYAHRPI"
+// Explanation:
+
+var convert = function(s, numRows) {
+    if(numRows==1)
+        return s
+    var result='';
+    var increment=2*numRows-2;
+    for(var x=0;x<numRows;x++){
+        for(var y=0;y+x<s.length;y+=increment){
+            result+=s[x+y]
+            if(x!==0&&x!=numRows-1&&y+increment-1<s.length)
+                result+=s[y+increment-1]
+        }
+    }
+    return result
+};
+
+
+
+console.log(convert("GEEKSFORGEEKS",3))
