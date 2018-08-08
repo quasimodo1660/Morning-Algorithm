@@ -739,13 +739,101 @@ var convert = function(s, numRows) {
     for(var x=0;x<numRows;x++){
         for(var y=0;y+x<s.length;y+=increment){
             result+=s[x+y]
-            if(x!==0&&x!=numRows-1&&y+increment-1<s.length)
-                result+=s[y+increment-1]
+            if(x!==0&&x!=numRows-1&&y+increment-x<s.length)
+                result+=s[y+increment-x]
         }
     }
     return result
 };
 
+// Input: "babad"
+// Output: "bab"
+// Note: "aba" is also a valid answer.
 
 
-console.log(convert("GEEKSFORGEEKS",3))
+
+var longestPalindrome = function (s) {
+    var longest=''
+    for(var x=0;x<s.length;x++){
+        for(var y=x;y<s.length;y++){
+            if(s[x]==s[y]){
+                var temp=s.slice(x,y+1)
+                if(temp.length>longest.length && temp==temp.split('').reverse().join(''))
+                    longest=temp
+            }
+        }
+    }
+    return longest.length
+};
+
+var longestPalindromeI = function(s) {
+    if(!s||s.length==0)
+        return 0
+    var temp={}
+    for(var x=0;x<s.length;x++){
+        if(temp[s[x]])
+            delete temp[s[x]]
+        else
+            temp[s[x]]=true
+    }
+    console.log(temp)
+    var remove=Object.keys(temp).length
+    // if(remove>1)
+    //     remove-=1
+    return s.length-remove
+}; 
+
+
+function ChangeMoney(m){
+    var arr=[0,0,0,0]
+    while(m>0){
+        if(m>.25){
+            m-=.25
+            arr[0]++
+        }
+        else if(m>.10){
+            m-=.10
+            arr[1]++
+        }
+        else if(m>.05){
+            m-=.05
+            arr[2]++
+        }
+        else{
+            m-=.01;
+            arr[3]++
+        }
+    }
+    return arr
+}
+
+
+function mostFrequentSubstring(min,max,uni,str){
+    str=str.replace(/[^a-zA-Z]/g,'')
+    var temp={};
+    // var uniql=''
+    var most=0;
+    
+    // // for(var i=0;i<str.length;i++){
+    // //     if(!uniql.includes(str[i]))
+    // //         uniql+=str[i]
+    // }
+    // console.log(uniql)
+   for(var x=0;x<=str.length-min;x++){
+       for(var y=x+min;y<=str.length&&y<=x+max;y++){  
+            if(str.slice(x,y) in temp){
+                temp[str.slice(x,y)]=temp[str.slice(x,y)]+1
+            }            
+            else{
+                temp[str.slice(x,y)]=1
+            }             
+            
+            if(temp[str.slice(x,y)]>most)
+                most=temp[str.slice(x,y)]
+       }
+   }
+   return most
+}
+
+
+console.log(mostFrequentSubstring(2, 4, 5, "abababab"))
