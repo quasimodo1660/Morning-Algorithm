@@ -627,6 +627,8 @@ var intersection = function(nums1, nums2) {
     return number
  };
 
+//  Example:
+//  Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2, 2].
 
  var intersectionII = function(nums1, nums2) {
     var number=[]
@@ -778,8 +780,8 @@ var longestPalindromeI = function(s) {
     }
     console.log(temp)
     var remove=Object.keys(temp).length
-    // if(remove>1)
-    //     remove-=1
+    if(remove>1)
+        remove-=1
     return s.length-remove
 }; 
 
@@ -834,6 +836,46 @@ function mostFrequentSubstring(min,max,uni,str){
    }
    return most
 }
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {TreeNode} p
+ * @param {TreeNode} q
+ * @return {TreeNode}
+ */
 
+var lowestCommonAncestor = function(root, p, q) {
+    while(true){
+        if(p.val>=root.val&&root.val>=q.val||p.val<=root.val&&root.val<=q.val)
+            return root
+        else if(p.val>root.val&&q.val>root.val)
+            root=root.right
+        else
+            root=root.left
+    }
+};
+
+
+var lowestCommonAncestorII = function(root, p, q) {
+    if(!root)
+        return null
+    if(root===p||root===q)
+        return root
+    var left = lowestCommonAncestor(root.left,p,q)
+    var right = lowestCommonAncestor(root.right,p,q)
+    
+    if(left&&right)
+        return root
+    else if(left)
+        return left
+    else
+        return right
+};
 
 console.log(mostFrequentSubstring(2, 4, 5, "abababab"))
