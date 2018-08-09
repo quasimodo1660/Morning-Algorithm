@@ -879,3 +879,29 @@ var lowestCommonAncestorII = function(root, p, q) {
 };
 
 console.log(mostFrequentSubstring(2, 4, 5, "abababab"))
+
+
+var timesCalled = 0;
+function countUp() {
+   let thisCallNumber = timesCalled++;
+   let greeting = `Called ${thisCallNumber} times`;
+   if (timesCalled === 3) {
+     greeting = "Woah woah slow down there...";
+   }
+
+   console.log(greeting);
+}
+
+countUp();
+countUp();
+countUp();
+
+function oddNumbers(l, r) {
+    for(var i=l;i<=r;i++){
+        if(i%2!=0)
+            console.log(i)
+    }
+
+}
+
+oddNumbers(2,5)
